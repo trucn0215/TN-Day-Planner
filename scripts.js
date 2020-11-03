@@ -10,17 +10,15 @@ var timeBlock = $(".time-Block")
 var today = moment();
 $("#currentDay").text(today.format("dddd, MMMM Do"));
 
+// Get the current hour of the day using moment.js
+var currentHour = parseInt(moment().format("k"));
+
 // timeBlock
 var bussinessHours = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
 
-// Get the current hour of the day using moment.js
-var currentHour = moment().format("hA");
-
-// console.log(currentHour);
-
 // Create time blocks for from 9AM to 5PM
 function createTimeBlocks (){
-    for (i=0; i < bussinessHours.length; i++){
+    for (var i=0; i < bussinessHours.length; i++){
         singleTimeBlock = $("<div>").addClass("row");
         timeBlock.append(singleTimeBlock);
         hourEl = $("<div>").addClass("hour col text-right").text(bussinessHours[i]);
@@ -32,12 +30,40 @@ function createTimeBlocks (){
         saveIcon = $("<i>").addClass("fa fa-save").css("font-size","36px");
         saveEl.append(saveIcon);
     }
+
+    // if (bussinessHours.length == currentHour){
+    //     textEl.addClass("present")
+    // }
+    // else if (bussinessHours.length < currentHour){
+    //     textEl.addClass("past")
+    // }
+    // else if (bussinessHours.length > currentHour){
+    //     textEl.addClass("future")
+    // }
+// console.log(bussinessHours.length)
+
 }
+// compare = bussinessHours[1] >= currentHour;
+// console.log(currentHour)
+// console.log(bussinessHours[i])
+// console.log(compare)
 
-
+// function timeCheck (){
+//     for (var i=0; i<bussinessHours.length+1;i++){
+//         if (bussinessHours[i] = currentHour){
+//             textEl.addClass("present")
+//         }
+//         else if (bussinessHours[i] < currentHour){
+//             textEl.addClass("past")
+//         }
+//         else {
+//             textEl.addClass("future")
+//         }
+//     }
+// }
 
 createTimeBlocks();
-
+// timeCheck();
 // loop over the hours from 9AM to 5PM.
 
 //      var i = 9
