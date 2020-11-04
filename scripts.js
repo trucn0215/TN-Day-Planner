@@ -4,7 +4,7 @@ var saveEl;
 var saveIcon;
 var singleTimeBlock;
 
-var timeBlock = $(".time-Block")
+var timeBlock = $(".time-Block");
 var textAreaHour = [];
 
 // Get the current hour of the day using moment.js
@@ -54,5 +54,14 @@ function timeCheck (){
     }
 }
 
+function saveText(event){
+    if (event.target.mathches("button")){
+        event.preventDefault();
+        var descriptionEl = $(event.target.parentElement.children[1].id);
+        console.log(descriptionEl);
+    }
+}
+
 createTimeBlocks();
 timeCheck();
+timeBlock.on("click", ".saveBtn", saveText);
