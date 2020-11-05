@@ -38,3 +38,21 @@ THEN the saved events persist
 [Deployed Link]()
 
 ## Screenshoot
+
+### Current Header Date 
+![current Header date](img/header-time.png)
+
+### Create Time Block
+![time Block](img/create-time-blocks.png)
+
+### Highlighting Text Block
+![highlight text Blocks](img/highlight-past-current-future.png)
+
+### Save Info
+![Save Info](img/function-save-info.png)
+
+### Set-Get-localStorage
+![localStorage](img/set-get-save-data.png)
+
+### Run functions
+![Functions](img/run-functions.png)

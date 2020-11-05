@@ -58,27 +58,20 @@ function timeCheck() {
     }
 }
 
+// function to get and save values after saveBtn is clicked.
 function saveInfo(event) {
     event.preventDefault();
 
     var string = $(event.target).parent().children().eq(1).val();
-    var textareaId = $(event.target).parent().children().eq(1).attr('id');
+    var textareaId = $(event.target).parent().children().eq(1).attr("id");
 
     //grab button id and value and send it to local storage
-    if (textareaId === undefined && string === undefined) {//when they click the icon send them one branch up to get the values
-
+    if (textareaId === undefined && string === undefined) {
         string = $(event.target).parent().parent().children().eq(1).val();
-        textareaId = $(event.target).parent().parent().children().eq(1).attr('id');
+        textareaId = $(event.target).parent().parent().children().eq(1).attr("id");
     }
-
     //call function to save data to local storage
     setData(string, textareaId);
-    //console.log(textAreaValue);
-}
-
-// save data to localStorage
-function getJsonData() {
-    return JSON.parse(localStorage.getItem("textValue"));
 }
 
 var textAreaValue = [];
@@ -86,26 +79,34 @@ var armyTime = 9;
 
 //set data to JSON
 function setData(string, ID) {
-    textAreaValue = getJsonData();
+    if (localStorage.getItem("textData") !== null) {
+        textAreaValue = getData();
+    }
     textAreaValue.push({ textareaId: ID, savedText: string });
 
-    localStorage.setItem("textValue", JSON.stringify(textAreaValue));
+    localStorage.setItem("textData", JSON.stringify(textAreaValue));
 }
 
+// save data to localStorage
+function getData() {
+    return JSON.parse(localStorage.getItem("textData"));
+}
+
+// render data by loop though th array to 
 function renderData() {
-    var arrayJSON = getJsonData();
+
+    var arrayJSON = getData();
 
     if (!arrayJSON) {
         return;
     }
     for (var i = 0; i < arrayJSON.length; i++) {
-        $('#' + arrayJSON[i].textareaId).text(arrayJSON[i].savedText);
+        $("#" + arrayJSON[i].textareaId).text(arrayJSON[i].savedText);
     }
 }
 
-console.log(setData())
-
+// run the functions
 createTimeBlocks();
 timeCheck();
 renderData();
-timeBlock.on('click', '.saveBtn', saveInfo);
+timeBlock.on("click", ".saveBtn", saveInfo);
