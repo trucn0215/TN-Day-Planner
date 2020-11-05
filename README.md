@@ -34,8 +34,8 @@ THEN the saved events persist
 ```
 
 ## Link
-[Repo Link]()  
-[Deployed Link]()
+[Repo Link](https://github.com/trucn0215/TN-Day-Planner)  
+[Deployed Link](https://trucn0215.github.io/TN-Day-Planner/)
 
 ## Screenshoot
 
